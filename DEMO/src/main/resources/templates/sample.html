@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <script src="/js/jquery.qrcode.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      var qrtext = "〒274-0072 千葉県船橋市三山６丁目１２−３";
+      var utf8qrtext = unescape(encodeURIComponent(qrtext));
+      $("#img-qr").html("");
+      $("#img-qr").qrcode({text: utf8qrtext}); 
+    });
+  </script>
+</head>
+
+<body>
+  <div id="img-qr"></div>
+</body>
+
+</html>
