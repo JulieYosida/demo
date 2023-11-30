@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+		<tr th:each="studentstas : ${selectResult}">
+			<td th:text="${studentstas.student_id}"></td>
+			<td th:text="${studentstas.class_id}"></td>
+			<td th:text="${studentstas.student_name}"></td>
+			<td th:text="${studentstas.attendance_data}"></td>
+			<td th:text="${studentstas.is_present}"></td>
+		</tr>
+</body>
+</html>
