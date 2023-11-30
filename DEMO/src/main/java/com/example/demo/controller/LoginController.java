@@ -14,7 +14,7 @@ public class LoginController {
 	@Autowired
 	private LoginRepository loginRepository;
 
-	@RequestMapping(path = "/mylogin", method = RequestMethod.GET)
+	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String third() {
 		return "login";
 	}
@@ -28,12 +28,42 @@ public class LoginController {
 
 		Login user = loginRepository.findById(Integer.parseInt(user_id)).orElse(null);
 
-		if (user != null && user.getPW().equals(password)) {
+		if (user != null && user.getPassword().equals(password)) {
 			return "redirect:/home";
 		} else {
 			return "redirect:/ng";
 		}
 
+	}
+
+	@RequestMapping(path = "/register", method = RequestMethod.GET)
+	public String showRegistrationForm() {
+		return "register";
+	}
+
+	@RequestMapping(path = "/register", method = RequestMethod.POST)
+	public String register(String user_id, String student_name, String password, String confirm_password, Model model) {
+		// Check if passwords match
+		if (!password.equals(confirm_password)) {
+			model.addAttribute("error", "Passwords do not match");
+			return "register";
+		}
+
+		// Check if the user_id is already registered
+		if (loginRepository.findById(Integer.parseInt(user_id)).isPresent()) {
+			model.addAttribute("error", "User ID already exists");
+			return "register";
+		}
+
+		// Create a new user and save to the database
+		Login newUser = new Login();
+		newUser.setID(Integer.parseInt(user_id));
+		newUser.setStudent_name(student_name);
+		newUser.setPassword(password);
+		loginRepository.save(newUser);
+
+		// Redirect to login page after successful registration
+		return "redirect:/login";
 	}
 
 }

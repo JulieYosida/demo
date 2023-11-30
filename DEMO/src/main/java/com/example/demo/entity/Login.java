@@ -16,6 +16,25 @@ public class Login {
 	@Column(name = "user_id")
 	private int user_id;
 
+	@Column(name = "student_name")
+	private String student_name;
+
+	public String getStudent_name() {
+		return student_name;
+	}
+
+	public void setStudent_name(String student_name) {
+		this.student_name = student_name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Column(name = "password")
 	private String password;
 
@@ -25,14 +44,6 @@ public class Login {
 
 	public void setID(int user_id) {
 		this.user_id = user_id;
-	}
-
-	public String getPW() {
-		return password;
-	}
-
-	public void setPW(String password) {
-		this.password = password;
 	}
 
 }
