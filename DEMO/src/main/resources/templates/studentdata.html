@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<tr th:each="studentstas : ${resultList}">
+		<tr th:each="studentstas : ${selectResult}">
 			<td th:text="${studentstas.student_id}"></td>
 			<td th:text="${studentstas.class_id}"></td>
 			<td th:text="${studentstas.student_name}"></td>

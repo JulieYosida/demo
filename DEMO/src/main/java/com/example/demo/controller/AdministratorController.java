@@ -22,6 +22,24 @@ public class AdministratorController {
 		return "adminstrator";
 	}
 
+	@RequestMapping(path = "/AttendanceStat", method = RequestMethod.POST)
+	public String viewPage2() {
+
+		return "adminstrator";
+	}
+
+	@RequestMapping(path = "/classContact", method = RequestMethod.POST)
+	public String viewPage3() {
+
+		return "adminstrator";
+	}
+
+	@RequestMapping(path = "/contact", method = RequestMethod.POST)
+	public String viewPage4() {
+
+		return "adminstrator";
+	}
+
 	//一覧表示用
 	@RequestMapping(path = "/studentdata", method = RequestMethod.POST)
 	public String viewData(Model model) {
@@ -30,7 +48,7 @@ public class AdministratorController {
 
 		resultList = jdbcTemplate.queryForList("SELECT * FROM Attendance;");
 
-		model.addAttribute("tangoList", resultList);
+		model.addAttribute("selectResult", resultList);
 
 		return "studentdata";
 
@@ -55,7 +73,7 @@ public class AdministratorController {
 
 	//削除用メソッド
 	@RequestMapping(path = "/studataDel", method = RequestMethod.POST)
-	public String postSr() {
+	public String postDel() {
 
 		return "studentdata";
 	}
