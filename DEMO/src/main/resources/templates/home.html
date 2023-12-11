@@ -4,6 +4,32 @@
 <head>
     <meta charset="utf-8">
     <title>ホーム</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current day of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+            var today = new Date().getDay()-1;
+
+            // Array to store the schedule for each day
+            var schedule = [
+                ["フレームワーク", "進級制作", "Javasqript"],
+                ["システム設計", "C#", "フレームワーク"],
+                ["ノーコード", "スポーツ実習"],
+                ["進級制作", "データベース", "情報総合"],
+                ["暗号技術", "検定対策", "Python"]
+            ];
+
+            // Display the schedule based on the current day
+            var scheduleToday = schedule[today];
+            var scheduleContent = "<ul>";
+            for (var i = 0; i < scheduleToday.length; i++) {
+                scheduleContent += "<li>" + scheduleToday[i] + "</li>";
+            }
+            scheduleContent += "</ul>";
+
+            // Update the content in the paragraph with id "schedule"
+            document.getElementById("schedule").innerHTML = scheduleContent;
+        });
+    </script>
 </head>
 
 <body>
@@ -13,7 +39,7 @@
         <input type="submit" value="QRコード表示">
     </form>
     <h2>本日の授業</h2>
-    <p>本日の授業の詳細がここに表示されます.</p>
+    <p id="schedule"></p>
 </body>
 
 </html>

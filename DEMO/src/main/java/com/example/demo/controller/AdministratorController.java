@@ -16,6 +16,12 @@ public class AdministratorController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
+	@RequestMapping(path = "/adminstrator", method = RequestMethod.GET)
+	public String viewPage1() {
+
+		return "adminstrator";
+	}
+
 	@RequestMapping(path = "/adminstrator", method = RequestMethod.POST)
 	public String viewPage() {
 
