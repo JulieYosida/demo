@@ -16,37 +16,41 @@ public class AdministratorController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
-	@RequestMapping(path = "/adminstrator", method = RequestMethod.POST)
-	public String viewPage() {
+	@RequestMapping(path = "/administrator", method = RequestMethod.GET)
+	public String viewAdmin() {
 
-		return "adminstrator";
+		return "administrator";
 	}
 
-	@RequestMapping(path = "/AttendanceStat", method = RequestMethod.POST)
-	public String viewPage2() {
-
-		return "adminstrator";
-	}
-
-	@RequestMapping(path = "/classContact", method = RequestMethod.POST)
-	public String viewPage3() {
-
-		return "adminstrator";
-	}
-
-	@RequestMapping(path = "/contact", method = RequestMethod.POST)
-	public String viewPage4() {
-
-		return "adminstrator";
-	}
-
-	//一覧表示用
-	@RequestMapping(path = "/studentdata", method = RequestMethod.POST)
-	public String viewData(Model model) {
+	@RequestMapping(path = "/AttendanceStats", method = RequestMethod.GET)
+	public String viewAtStats(Model model) {
 
 		List<Map<String, Object>> resultList;
 
 		resultList = jdbcTemplate.queryForList("SELECT * FROM Attendance;");
+
+		model.addAttribute("selectResult", resultList);
+
+		return "studentdata";
+	}
+
+	@RequestMapping(path = "/Contact", method = RequestMethod.GET)
+	public String viewContact() {
+
+		return "contact";
+	}
+
+	//一覧表示用
+	@RequestMapping(path = "/AttendanceStats", method = RequestMethod.POST)
+	public String viewData(String search, Model model) {
+
+		List<Map<String, Object>> resultList;
+
+		if ("" == search) {
+			resultList = jdbcTemplate.queryForList("SELECT * FROM Attendance;");
+		} else {
+			resultList = jdbcTemplate.queryForList("SELECT * FROM Attendance WHERE stName LIKE ?;", "%"+search+"%");
+		}
 
 		model.addAttribute("selectResult", resultList);
 

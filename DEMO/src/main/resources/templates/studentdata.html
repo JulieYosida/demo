@@ -2,15 +2,152 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/studentdata.css}">
+<script src="/js/studentdata.js" defer></script>
+<title>学生データ</title>
 </head>
 <body>
+	<h1>生徒一覧</h1>
+	<form th:action="@{/AttendanceStats}" method="POST">
+		名前検索
+		<input type="text"name="search">
+	<input type="submit" value="検索">
+	</form>
+  <div class="overlay" id="overlay">
+    <div class="overlay-content">
+      <p>ここにオーバーレイ内のコンテンツが入ります。</p>
+      <form th:action="@{/AttendanceStats}" method="POST">
+		  <table id="refineSearch">
+			  <thead>
+				  <tr>
+					  <th>学年</th>
+					  <th>クラス</th>
+					  <th>出席状況</th>
+				  </tr>
+			  </thead>
+           <tr>
+            <td>
+			  <input type="radio" id="1" name="grade" value="1">
+              <label for="1">1</label>
+			</td>
+            <td>
+			  <input type="radio" id="A" name="class" value="A">
+              <label for="A">A</label>
+			</td>
+			<td>
+			  <input type="radio" id="Attended" name="AttendanceStatus" value="Attended">
+              <label for="Attended">出席済み</label>
+			</td>
+           </tr>
+           <tr>
+            <td>
+			  <input type="radio" id="2" name="grade" value="2">
+              <label for="2">2</label>
+			</td>
+            <td>
+			  <input type="radio" id="B" name="class" value="B">
+              <label for="B">B</label>
+			</td>
+			<td>
+			  <input type="radio" id="NotAttended" name="AttendanceStatus" value="NotAttended">
+              <label for="NotAttended">未出席</label>
+			</td>
+           </tr>
+           <tr>
+            <td>
+			  <input type="radio" id="3" name="grade" value="3">
+              <label for="3">3</label>
+			</td>
+            <td>
+			  <input type="radio" id="C" name="class" value="C">
+              <label for="C">C</label>
+			</td>
+           </tr>
+           <tr>
+            <td>
+			  <input type="radio" id="4" name="grade" value="4">
+              <label for="4">4</label>
+			</td>
+            <td>
+			  <input type="radio" id="D" name="class" value="D">
+              <label for="D">D</label>
+			</td>
+           </tr>
+           <tr>
+			<td></td>
+            <td>
+			  <input type="radio" id="E" name="class" value="E">
+              <label for="E">E</label>
+			</td>
+           </tr>
+           <tr>
+			   <td></td>
+            <td>
+			  <input type="radio" id="F" name="class" value="F">
+              <label for="F">F</label>
+			</td>
+           </tr>
+           <tr>
+			   <td></td>
+            <td>
+			  <input type="radio" id="G" name="class" value="G">
+              <label for="G">G</label>
+			</td>
+           </tr>
+           <tr>
+			   <td></td>
+            <td>
+			  <input type="radio" id="H" name="class" value="H">
+              <label for="H">H</label>
+			</td>
+           </tr>
+           <tr>
+			   <td></td>
+            <td>
+			  <input type="radio" id="I" name="class" value="I">
+              <label for="I">I</label>
+			</td>
+           </tr>
+           <tr>
+			   <td></td>
+            <td>
+			  <input type="radio" id="K" name="class" value="K">
+              <label for="K">K</label>
+			</td>
+           </tr>
+          </table>
+       <br>
+      <button type="submit">絞り込む</button>
+      <button onclick="closeOverlay()">閉じる</button>
+      </form>
+    </div>
+  </div>
+
+  <button onclick="openOverlay()">絞り込み</button>
+
+  </div>
+	<table id="studentData">
+	 <thead>
+      <tr>
+        <th>学籍番号</th>
+        <th>学年</th>
+        <th>クラス</th>
+        <th>出席番号</th>
+        <th>名前</th>
+        <th>出席</th>
+        <th>出席時間</th>
+      </tr>
+    </thead>
 		<tr th:each="studentstas : ${selectResult}">
-			<td th:text="${studentstas.student_id}"></td>
-			<td th:text="${studentstas.class_id}"></td>
-			<td th:text="${studentstas.student_name}"></td>
-			<td th:text="${studentstas.attendance_data}"></td>
-			<td th:text="${studentstas.is_present}"></td>
+			<td th:text="${studentstas.id}"></td>
+			<td th:text="${studentstas.grade}"></td>
+			<td th:text="${studentstas.class}"></td>
+			<td th:text="${studentstas.atNumber}"></td>
+			<td th:text="${studentstas.stName}"></td>
+			<td th:text="${studentstas.atConfirm}"></td>
+			<td th:text="${studentstas.atTime}"></td>
+			<br>
 		</tr>
+	</table>
 </body>
 </html>

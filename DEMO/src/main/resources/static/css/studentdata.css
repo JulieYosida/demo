@@ -1,0 +1,66 @@
+@charset "UTF-8";
+    #refineSearch {
+      border-collapse: separate;
+      border-spacing: 10px; /* セル間のスペースを設定 */
+    }
+
+    #refineSearch td {
+      padding: 8px;
+      text-align: left;
+    }
+    
+/* 学生テーブルのスタイル */
+    #studentData {
+      border-collapse: collapse;
+      width: 90vw;
+    }
+
+    /* 学生テーブルのヘッダーのスタイル */
+    #studentData th,#studentData td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    /* 偶数行の背景色を設定 */
+    #studentData tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    /* ヘッダー行の背景色 */
+    #studentData th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* 半透明な黒 */
+      justify-content: center;
+      align-items: center;
+      z-index: 999; /* 他の要素より手前に表示 */
+    }
+
+    .overlay-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ボタンスタイル */
+    button {
+      padding: 10px;
+      font-size: 12px;
+      cursor: pointer;
+    }

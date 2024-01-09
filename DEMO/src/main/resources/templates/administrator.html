@@ -4,25 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
-    <title>ログイン画面</title>
+    <link rel="stylesheet" th:href="@{/css/administrator.css}">
+    <title>出席管理</title>
 </head>
 <body>
     <div class="login-container">
-        <h2>ログイン</h2>
-            <div class="form-group">
-				<form th:action="@{/AttendanceStat}"
-				<button type="submit">出席状況確認</button>
-				</form>
-				
-				<form th:action="@{/classContact}"
-				<button type="submit">授業連絡記入</button>
-				</form>
-				
-				<form th:action="@{/contact}"
-				<button type="submit">連絡事項記入</button>
-				</form>
-            </div>
+        <h2>管理者メニュー</h2>
+        <div class="form-group">
+            <form th:action="@{/AttendanceStats}" method="GET">
+                <button type="submit">出席状況確認</button>
+            </form>
+            
+            <form th:action="@{/Contact}" method="GET">
+                <button type="submit">連絡事項記入</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
